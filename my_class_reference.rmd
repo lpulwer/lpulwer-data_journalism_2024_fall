@@ -50,7 +50,7 @@ library(tidyverse)
 
 > install.packages('tidyverse')
 Error in install.packages : Updating loaded packages
-> #this functon intalls packages 
+> #this functon installs packages 
 
 > maryland_winred_contributions <- read_rds("maryland_winred.rds")
 Error in readRDS(con, refhook = refhook) : cannot open the connection
