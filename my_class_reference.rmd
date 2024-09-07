@@ -46,6 +46,7 @@ library(tidyverse)
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package to force all conflicts to become errors
+
 > #library loads packages. In this case, it's the tidyverse
 
 > install.packages('tidyverse')
@@ -58,3 +59,49 @@ In addition: Warning message:
 In readRDS(con, refhook = refhook) :
   cannot open file 'maryland_winred.rds': No such file or directory
 > #I don't have the file on my computer. But in theory, R studio is supposed to read to import the data from the given file 
+
+glimpse(maryland_winred_contributions)
+# gives overview of the rows and columns 
+
+head(maryland_winred_contributions)
+#shows the first 6 rows 
+
+maryland_winred_contributions |>
+  group_by(date) |>
+  summarise(
+    count_contribs = n()
+    
+# groups by a certain variable
+
+ arrange(desc(count_contribs))
+
+#arranges rows 
+
+maryland_winred_contributions |>
+  group_by(memo_text, amount) |>
+  summarise(
+    count_contribs = n()
+    
+#multiple grouping 
+
+maryland_winred_contributions |>
+  group_by(memo_text) |>
+  summarise(
+    count_contribs = n(),
+    total_amount = sum(amount)
+    
+    
+#mean and median 
+maryland_winred_contributions |>
+  group_by(city) |>
+  summarise(
+    count_contribs = n(),
+    total_amount = sum(amount),
+    mean_amount = mean(amount),
+    median_amount = median(amount),
+    min_amount = min(amount),
+    max_amount = max(amount)
+    
+#mean, median, min, mas 
+
+
