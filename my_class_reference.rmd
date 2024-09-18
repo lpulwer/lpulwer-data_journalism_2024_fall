@@ -104,4 +104,114 @@ maryland_winred_contributions |>
     
 #mean, median, min, mas 
 
+summary()
+#do math on numeric columns. Will provide median, quartiles, mean, mas, min. 
+
+colnames()
+#list of all the columns 
+
+select()
+#only show me this set of columns 
+
+#example
+primary_24 |>
+  select(office_name, office_district, candidate_name, party, county_name, election_day, votes)
+  
+  
+
+mutate()
+#create a new column 
+
+#example 1 
+mutate(
+  percent_election_day = election_day/votes
+  
+#example 2 (change existing data)
+standardized_maryland_cities <- maryland_cities |>
+  mutate(
+    upper_city = str_to_upper(city)
+  
+primary_24 |>
+  select(office_name, office_district, candidate_name, party, county_name, election_day, votes) |>
+  mutate(
+  percent_election_day = (election_day/votes)*100
+# *100 moves the decimal   
+
+str_to_upper
+# puts everything into upper case "THE QUICK BROWN DOG"
+
+str_to_lower
+# puts everything into lower case "the quick brown dog"
+
+str_to_title 
+# capitalizes every first letter of a word 
+
+case_when()
+#sets conditions 
+
+#example
+maryland_winred_categories <- maryland_winred_contributions |>
+  mutate(
+    amount_category = case_when(
+        amount < 100 ~ "Less than $100",
+        amount >= 100 & amount < 500 ~ "Between $100 and $499",
+        amount >= 500 & amount < 1500 ~ "Between $500 and $1499",
+        amount >= 1500 & amount < 3000 ~ "Between $500 and $2999",
+        amount >= 3000 ~ "$3,000 or more"
+ 
+ filter()
+ #filters out certain info that is wanted 
+ 
+ #example
+ filter(county_name == "Prince George's County")
+ 
+ #example 2 (combining filters)
+ filter(county_name == "Prince George's County") |> filter(office_name == "U.S. Senator")
+ 
+ 
+ AND filter
+ #example
+ filter(county_name == "Prince George's County" & office_name == "U.S. Senator")
+ 
+ OR filter 
+ #example 
+ filter(county_name == "Prince George's County" | office_name == "U.S. Senator")
+ 
+ 
+ mdy
+ #changes dates into YYYY-MM-DD format
+ #example
+ -> mutate(expenditure_date=mdy(expenditure_date))
+ 
+ maryland_expenses |>
+  mutate(month = floor_date(expenditure_date, "month")) |>
+  group_by(month) |>
+  summarise(total_amount = sum(amount)) |>
+  arrange(desc(total_amount))d
+  
+  read_cvs(guess_max=10)
+  #tells what kind of datatypes we have for the first 10 columns.
+  
+  texas_precinct_20 <- texas_precinct_20 |>
+  mutate(election_day = case_when(
+    election_day == '5+' ~ '49',
+    .default = election_day
+#.default says that everything else should be left the same but +5 
+
+mutate(election_day = as.numeric(election_day))
+# as.numeric transforms the column into a numeric column 
+
+clean_names()
+#makes column names to lower case and replaces spaces with column dates 
+
+clean_names() |> 
+  rename(linenumber = x1_linenumber)
+# renames the old column into the new one 
+# ! new name comes first, then comes old name 
+
+get_dupes()
+# identifies two excact same columns 
+ 
+ 
+        
 
