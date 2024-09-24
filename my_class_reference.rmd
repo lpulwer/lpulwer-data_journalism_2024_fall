@@ -160,27 +160,27 @@ maryland_winred_categories <- maryland_winred_contributions |>
         amount >= 3000 ~ "$3,000 or more"
  
  filter()
- #filters out certain info that is wanted 
+#filters out certain info that is wanted 
  
- #example
+#example
  filter(county_name == "Prince George's County")
  
- #example 2 (combining filters)
+#example 2 (combining filters)
  filter(county_name == "Prince George's County") |> filter(office_name == "U.S. Senator")
  
  
  AND filter
- #example
+#example
  filter(county_name == "Prince George's County" & office_name == "U.S. Senator")
  
  OR filter 
- #example 
+#example 
  filter(county_name == "Prince George's County" | office_name == "U.S. Senator")
  
  
  mdy
- #changes dates into YYYY-MM-DD format
- #example
+#changes dates into YYYY-MM-DD format
+#example
  -> mutate(expenditure_date=mdy(expenditure_date))
  
  maryland_expenses |>
@@ -190,7 +190,7 @@ maryland_winred_categories <- maryland_winred_contributions |>
   arrange(desc(total_amount))d
   
   read_cvs(guess_max=10)
-  #tells what kind of datatypes we have for the first 10 columns.
+#tells what kind of datatypes we have for the first 10 columns.
   
   texas_precinct_20 <- texas_precinct_20 |>
   mutate(election_day = case_when(
@@ -211,7 +211,38 @@ clean_names() |>
 
 get_dupes()
 # identifies two excact same columns 
+
+problems(texas_precinct_20)
+# identifies problems 
+
+texas_precinct_20 <- texas_precinct_20 |>
+  mutate(election_day = case_when(
+    election_day == '5+' ~ '49',
+    .default = election_day
+  ))
+  
+#default leaves everything else as it is but the 5+
  
+ cleaned_conowingo <- conowingo |>
+  clean_names() |> 
+  rename(linenumber = x1_linenumber) |> 
+  mutate(amount = as.numeric(amount)) |> 
+  distinct()
+#gets rid of the dupes 
  
-        
+ cleaned_conowingo <- conowingo |>
+  clean_names() |> 
+  rename(linenumber = x1_linenumber) |> 
+  mutate(amount = as.numeric(amount)) |> 
+  distinct() |>
+  mutate(zip = str_sub(zip, start=1L, end=5L)) |>
+  mutate(city = str_to_title(city)) |>
+  mutate(city = case_when(
+    city == "Conowing" ~ "Conowingo",
+    TRUE ~ city
+    ))
+    
+install.packages('refinr')
+# installs refinr package 
+
 

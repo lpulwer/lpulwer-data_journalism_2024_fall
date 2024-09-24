@@ -282,7 +282,7 @@ So AND gives us the same answer we got before. What does using the OR operator g
 **Task** Run the following code
 
 ```{r}
-or_prince_georges <- primary_24 |> filter(county_name == "Prince George's County" | office_name == "U.S. Senator")
+or_prince_georges <- primary_24 |> c
 
 nrow(or_prince_georges)
 ```
