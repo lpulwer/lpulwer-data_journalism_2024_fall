@@ -245,4 +245,19 @@ texas_precinct_20 <- texas_precinct_20 |>
 install.packages('refinr')
 # installs refinr package 
 
+dc_food |>
+  group_by(recipient_name) |>
+  summarise(
+    count=n()
+  ) |>
+  filter(str_detect(recipient_name, '^w|^W')) |> 
+  arrange(recipient_name)
+  
+# The filter function in the codeblock below says: look in the city column, and pluck out any value that starts with (the "^" symbol means "starts with") a lowercase "w" OR (the vertical "|", called a pipe, means OR) an uppercase "W". 
+
+cleaned_dc_food <- dc_food |>
+  mutate(recipient_clean=key_collision_merge(recipient_name)) |>
+  select(recipient_name, recipient_clean, everything())
+  
+# Key_collision_merge tries to find a standardized version of a certain value 
 
