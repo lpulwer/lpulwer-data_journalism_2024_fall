@@ -261,3 +261,34 @@ cleaned_dc_food <- dc_food |>
   
 # Key_collision_merge tries to find a standardized version of a certain value 
 
+Open Refine 
+# Tool by Google that allows standarizing values 
+
+bind_rows()
+# binds rows together 
+
+left_join
+# joins data from the left
+
+right_join 
+# joins data from the right
+# important: order matters 
+
+inner_join
+
+join_by
+# which column are we joining by
+# !!! if join doesn't excatly match, it's not gonna match 
+
+nrow()
+# just show me the numbers of rows 
+
+as.character
+#turns values into characters
+
+as.numeric
+#turns values into numbers 
+
+(across(ZCTA5N, as.character))
+#across makes sure that every value gets changed 
+
