@@ -308,4 +308,8 @@ rename(`Almira ED` = X2, `Almira EV` = X3, `Almira AVCB` = X4, `Benzonia ED` = X
     candidate == "Poll Book Totals" ~ "Ballots Cast",
     candidate %in% c("Hill Harper", "Elissa Slotkin", "Justin Amash", "Sherry O'Donnell", "Sandy Pensier", "Mike Rogers") ~ "U.S. Senate",
     candidate %in% c("Callie Barr", "Bob Lorinser", "Jack Bergman") ~ "U.S. House"
+    
+    
+tidycensus
+#makes calls to the Cencus API 
   
