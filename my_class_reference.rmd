@@ -313,3 +313,19 @@ rename(`Almira ED` = X2, `Almira EV` = X3, `Almira AVCB` = X4, `Benzonia ED` = X
 tidycensus
 #makes calls to the Cencus API 
   
+ggplot()
+# making charts 
+#!!! you have to seperate with a + if you want want to wirte a new code 
+geom_bar()
+# shape it will take 
+
+aes()
+# aestehtics 
+# e.g. maryland_top_counties |>
+  ggplot() +
+  geom_bar(aes(x=County, weight=UNAF_DIFF))
+
+
+
+
+  
