@@ -325,7 +325,36 @@ aes()
   ggplot() +
   geom_bar(aes(x=County, weight=UNAF_DIFF))
 
+geom_bar(aes(x=reorder(County,UNAF_DIFF), weight=UNAF_DIFF))
+# reorder function reorders chart
 
+coord_flip()
+#flips cooridnates 
+
+theme_minimal()
+#changes themes 
+
+ labs(
+    title="Counties with Biggest Jumps in Unaffiliated Voters",
+    x = "net change",
+    y = "county",
+    caption = "source: Maryland State Board of Elections"
+    
+  )
+  
+# adds title, changes labels and adds caption 
+
+geom_line(aes(x=date, y=total_contributions))
+
+#creates linechart
+
+scale_x_date(date_breaks = "1 week", date_labels = "%b %d")
+# breaks dates into weeks and gives specific label 
+
+theme(
+    axis.text.x = element_text(angle = 45,  hjust=1)
+    
+#changes the way the text is laid out
 
 
   
