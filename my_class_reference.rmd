@@ -356,5 +356,9 @@ theme(
     
 #changes the way the text is laid out
 
+write_csv(md_gov_county, "data/md_gov_county.csv")
+#make changes to the data directly 
+
+
 
   
