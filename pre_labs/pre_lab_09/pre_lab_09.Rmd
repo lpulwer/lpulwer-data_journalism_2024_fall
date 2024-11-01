@@ -119,7 +119,6 @@ In order to make a map, we need to be able to tell Datawrapper that a certain co
 md_gov_county <- md_gov_county |>
   mutate(Total_Votes = Cox + Moore + Lashar + Wallace + Harding) |>
   mutate((Percent_Moore = Moore/Total_Votes * 100))
-
 write_csv(md_gov_county, "data/md_gov_county.csv")
 ```
 
