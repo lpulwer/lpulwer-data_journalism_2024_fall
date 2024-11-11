@@ -400,8 +400,51 @@ filter(lbe == "Prince George's") |>
   
 pg_precincts_with_turnout <- pg_precincts |> left_join(pg_turnout, by=c("PRECINCT_ID"="precinct"))
 
+pres_url <- "https://elections.maryland.gov/elections/2024/general_Results/gen_detail_results_2024_1_1.html"
 
+read_html()
+# reads html 
+
+install.packages("rvest")
+# installs package rvest 
   
+  
+html_table()
+#gives you table of the html side 
+
+results <- results[[1]]
+# double bracked and the one goves you the first result of a table 
+
+rename(harris = 2, trump = 3, oliver = 4, stein = 5, kennedy = 6)
+# number implies the number column (second column etc.)
+
+slice(-25) 
+# gets rid of the last column (- means cut out)
+
+cmte_results |> html_elements('li')
+# grabs all of the li elemets 
+# !!! html element (singular) will grab the first one 
+
+html_elements('li') |> html_text()
+# gets the text from the tags 
+
+html_elements("li a")
+# find li and a tags together (ORDER IS IMPORTANT)
+
+committees_with_urls <- tibble(
+  name = committees %>% html_text(trim = TRUE),
+  url = committees %>% html_attr("href")
+)
+# tibble means make me a dataframe 
+#html_text will get text
+#html_attr(href) -> get the attributes href and assign that to URL
+
+filter(!str_detect(url, "^/"))
+#gets rid of the rows that justr have a dash and not the full URL 
+
+
+
+
   
 
 
