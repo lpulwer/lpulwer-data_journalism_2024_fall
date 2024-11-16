@@ -440,7 +440,7 @@ committees_with_urls <- tibble(
 #html_attr(href) -> get the attributes href and assign that to URL
 
 filter(!str_detect(url, "^/"))
-#gets rid of the rows that justr have a dash and not the full URL 
+#gets rid of the rows that just have a dash and not the full URL 
 
 
 
